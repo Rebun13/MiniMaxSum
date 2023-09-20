@@ -1,6 +1,8 @@
-#include <bits/stdc++.h>
-#include <numeric>
+#include <vector>
+#include <string>
 #include <iostream>
+#include <algorithm>
+#include <numeric>
 
 using namespace std;
 
@@ -50,7 +52,7 @@ string ltrim(const string &str) {
 
     s.erase(
         s.begin(),
-        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+        find_if(s.begin(), s.end(), [](unsigned char c) { return !ispunct(c); })
     );
 
     return s;
@@ -60,7 +62,7 @@ string rtrim(const string &str) {
     string s(str);
 
     s.erase(
-        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        find_if(s.rbegin(), s.rend(), [](unsigned char c) { return !ispunct(c); }).base(),
         s.end()
     );
 
